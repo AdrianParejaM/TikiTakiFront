@@ -36,20 +36,16 @@ const Cabecera = () => {
           src={menuHamb}
           alt="Menu"
           className="md:hidden w-10 h-10 cursor-pointer transition-colors duration-300"
-          onClick={toggleMenu}  // sin delay
+          onClick={toggleMenu}
           style={{ backgroundColor: menuAbierto ? 'rgba(255, 0, 0, 0.2)' : 'transparent' }}
         />
 
-        {/* Contenedor para usuario y cerrar sesión */}
         <div className="flex items-center gap-2">
-          {/* Info de usuario */}
+
           {sesionIniciada && datosSesion?.email && (
-            <Link to='/perfil' className="text-sm text-white md:text-base">
               <p className="nombre_usuario md:text-sm lg:text-base hidden md:flex">Hola, {datosSesion.email}</p>
-            </Link>
           )}
 
-          {/* Botón de sesión */}
           <nav className='navegacion_menu'>
             {!sesionIniciada ? (
               <Link className='enlace_login text-sm' to='/login'>Login</Link>
@@ -66,7 +62,7 @@ const Cabecera = () => {
       {menuAbierto && (
         <div className="fixed top-0 left-0 w-full h-full bg-[#272727] text-white flex flex-col items-center justify-center space-y-6 z-50 md:hidden transition-opacity duration-300">
           <button 
-            onClick={toggleMenu}  // sin delay
+            onClick={toggleMenu}
             className="absolute top-4 right-4 text-2xl bg-red-600 rounded-full w-10 h-10 flex items-center justify-center transition-colors duration-300"
             style={{ lineHeight: '1' }}
           >
@@ -77,7 +73,6 @@ const Cabecera = () => {
           <Link to='/mercado' className='navegacion__enlace text-xl' onClick={toggleMenu}>Mercado</Link>
           <Link to='/clasificacion' className='navegacion__enlace text-xl' onClick={toggleMenu}>Clasificación</Link>
           <Link to='/sobrenosotros' className='navegacion__enlace text-xl' onClick={toggleMenu}>Sobre Nosotros</Link>
-          <Link to='/perfil' className="navegacion__enlace text-xl" onClick={toggleMenu}>Perfil</Link>
         </div>
       )}
     </div>

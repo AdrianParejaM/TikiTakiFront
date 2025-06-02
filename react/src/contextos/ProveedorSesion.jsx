@@ -57,6 +57,7 @@ const ProveedorSesion = ({children}) => {
       setErrorUsuario("Cuenta creada con éxito. Revisa tu correo electrónico.");
     } catch (error) {
       setErrorUsuario(`Error al crear cuenta: ${error.message}`);
+      return error.message;
     }
     navigate(-1);
   };
@@ -89,18 +90,19 @@ const ProveedorSesion = ({children}) => {
         throw new Error(result.message || "Error al iniciar sesión");
       }
   
-      // Aquí se guarda el token en localStorage
+      // Aquí se guarda el token en localStorage.
       localStorage.setItem("token", result.token);
       
-      // Guardamos el usuario autenticado
-      setUsuario(result.user); // Asegúrate de que result.user contiene los datos del usuario
+      // Guardamos el usuario autenticado.
+      setUsuario(result.user);
       
       setSesionIniciada(true);
       setErrorUsuario("Sesión iniciada correctamente.");
-      navigate("/"); // Redirigir al usuario a su dashboard
+      navigate("/");
   
     } catch (error) {
       setErrorUsuario(`Error al iniciar sesión: ${error.message}`);
+      return error.message;
     }
   };
   
@@ -111,7 +113,7 @@ const ProveedorSesion = ({children}) => {
       const myHeaders = new Headers();
       myHeaders.append("Accept", "application/json");
   
-      // Recuperamos el token de localStorage
+      // Recuperamos el token de localStorage.
       const token = localStorage.getItem("token");
   
       if (!token) {
@@ -126,7 +128,7 @@ const ProveedorSesion = ({children}) => {
         redirect: "follow",
       };
   
-      // Realizamos la solicitud al endpoint de logout
+      // Realizamos la solicitud al endpoint de logout.
       const response = await fetch("http://localhost:8086/api/logout", requestOptions);
       const result = await response.text();
   
@@ -134,51 +136,22 @@ const ProveedorSesion = ({children}) => {
         throw new Error(result || "Error al cerrar sesión");
       }
   
-      // Eliminar el token después de cerrar sesión
+      // Eliminar el token después de cerrar sesión.
       localStorage.removeItem("token");
   
-      // Limpiar el estado de la sesión
+      // Limpiar el estado de la sesión.
       setUsuario({});
       setSesionIniciada(false);
       setErrorUsuario("Sesión cerrada correctamente.");
   
-      // Redirigir al login
+      // Redirigir al login.
       navigate("/login");
   
     } catch (error) {
       setErrorUsuario(`Error al cerrar sesión: ${error.message}`);
     }
   };
-/*
-  //Función para obtener el usuario.
-  const obtenerUsuario = async () => {
-    try {
-      const { data, error } = await supabase.auth.getUser();
 
-      if (error) {
-        throw error;
-      }
-      setUsuario(data.user);
-      setErrorUsuario(errorUsuarioInicial);
-
-    } catch (error) {
-      setErrorUsuario(error.message);
-    }
-  };
-
-  //Función para obtener el usuario.
-  const passwordOlvidada = async () => {
-    try {
-      let { data, error } = await supabase.auth.resetPasswordForEmail(datosSesion.email);
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      setErrorUsuario("Se le ha enviado un correo para restablecer la contraseña.");
-    }
-  };
-*/
   //Función para actualizar los datos.
   const actualizarDato = (evento) => {
     const { name, value } = evento.target;
@@ -191,7 +164,6 @@ const ProveedorSesion = ({children}) => {
     crearCuenta,
     iniciarSesion,
     cerrarSesion,
-    /*passwordOlvidada,*/
     actualizarDato,
     sesionIniciada,
     usuario,

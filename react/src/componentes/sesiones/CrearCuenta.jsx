@@ -2,14 +2,31 @@ import React, { useState } from "react";
 import useSesion from "../../hooks/useSesion.jsx";
 
 const CrearCuenta = () => {
-  const { crearCuenta, actualizarDato } = useSesion();
+  const { crearCuenta, actualizarDato, datosSesion } = useSesion();
   const [error, setError] = useState("");
+
+  const manejarCrearCuenta = async () => {
+    if (!datosSesion.nickname || datosSesion.nickname.length < 3) {
+      return setError("El nombre de usuario debe tener al menos 3 caracteres.");
+    }
+    if (!datosSesion.name) {
+      return setError("El nombre no puede estar vacío.");
+    }
+    if (!datosSesion.email.includes("@")) {
+      return setError("Introduce un correo válido.");
+    }
+    if (!datosSesion.password || datosSesion.password.length < 6) {
+      return setError("La contraseña debe tener al menos 6 caracteres.");
+    }
+
+    const errorRespuesta = await crearCuenta();
+    if (errorRespuesta) setError(errorRespuesta);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center h-1/5">
       <h2 className="mt-10 text-4xl font-bold text-[#7bb369] mb-4">Crea una nueva cuenta</h2>
 
-      {/* Contenedor del formulario */}
       <div className="w-full mt-5 max-w-xl p-0">
         <div className="mb-4 flex items-center">
           <label htmlFor="nickname" className="w-1/3 font-medium text-[#EEEEEE]">
@@ -69,11 +86,10 @@ const CrearCuenta = () => {
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
-        {/* Botón centrado */}
         <div className="flex justify-center">
           <button
             className="mt-6 bg-[#7bb369] text-white py-2 px-6 rounded-lg hover:bg-[#7AA369] transition"
-            onClick={crearCuenta}
+            onClick={manejarCrearCuenta}
           >
             Crear cuenta
           </button>

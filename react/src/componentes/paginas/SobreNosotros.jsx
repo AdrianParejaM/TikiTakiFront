@@ -5,7 +5,6 @@ const SobreNosotros = () => {
   return (
     <>
       <main className="min-h-screen flex flex-col items-center px-4 py-8 text-[#EEEEEE]">
-        {/* Cabecera */}
         <header className="w-full max-w-5xl mb-8 text-center">
           <p className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-extrabold tracking-wide text-[#7bb369] break-words">
             SOBRE&nbsp;NOSOTROS
@@ -13,7 +12,6 @@ const SobreNosotros = () => {
           <hr className="mt-2 h-1 w-32 mx-auto bg-[#046942] border-0 rounded" />
         </header>
 
-        {/* Bloque misión */}
         <section className="w-full max-w-5xl mb-8 bg-[#7bb369]/20 rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-semibold text-[#7bb369] mb-2">Nuestra misión</h2>
           <p className="leading-relaxed">
@@ -22,7 +20,6 @@ const SobreNosotros = () => {
           </p>
         </section>
 
-        {/* Bloque qué ofrecemos */}
         <section className="w-full max-w-5xl mb-8 bg-[#7bb369]/20 rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-semibold text-[#7bb369] mb-2">Qué ofrecemos</h2>
           <ul className="list-disc list-inside space-y-2">
@@ -33,7 +30,6 @@ const SobreNosotros = () => {
           </ul>
         </section>
 
-        {/* Bloque equipo */}
         <section className="w-full max-w-5xl mb-8 bg-[#7bb369]/20 rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-semibold text-[#7bb369] mb-2">Nuestro equipo</h2>
           <p className="leading-relaxed">
@@ -42,7 +38,6 @@ const SobreNosotros = () => {
           </p>
         </section>
 
-        {/* Bloque contacto */}
         <section className="w-full max-w-5xl bg-[#046942] rounded-lg shadow-lg p-6 text-center">
           <h2 className="text-2xl font-semibold text-[#EEEEEE] mb-4">¿Quieres saber más?</h2>
           <p className="mb-6">
