@@ -15,7 +15,7 @@ const Inicio = () => {
 
       {!sesionIniciada ? (
         <div className="bg-[#7bb369] p-10 rounded-xl shadow-lg w-11/12 md:w-3/4 lg:w-1/2 mx-auto my-10 text-center">
-          <h2 className="bg-[#046942] text-[#eeeeee] py-5 text-4xl font-bold rounded-t-xl shadow">
+          <h2 className="bg-[#046942] text-[#eeeeee] py-5 text-2xl md:text-4xl font-bold rounded-t-xl shadow">
             ¡Bienvenido a TIKI TAKI!
           </h2>
           <p className="text-[#eeeeee] text-xl mt-6 leading-relaxed">
