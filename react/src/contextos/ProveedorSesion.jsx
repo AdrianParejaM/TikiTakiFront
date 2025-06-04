@@ -47,7 +47,7 @@ const ProveedorSesion = ({children}) => {
         redirect: "follow"
       };
   
-      const response = await fetch("https://tikitaki-backend.onrender.com/api/register", requestOptions);
+      const response = await fetch("http://localhost:8086/api/register", requestOptions);
       const result = await response.json();
   
       if (!response.ok) {
@@ -83,7 +83,7 @@ const ProveedorSesion = ({children}) => {
         redirect: "follow",
       };
   
-      const response = await fetch("https://tikitaki-backend.onrender.com/api/login", requestOptions);
+      const response = await fetch("http://localhost:8086/api/login", requestOptions);
       const result = await response.json();
   
       if (!response.ok) {
@@ -129,7 +129,7 @@ const ProveedorSesion = ({children}) => {
       };
   
       // Realizamos la solicitud al endpoint de logout.
-      const response = await fetch("https://tikitaki-backend.onrender.com/api/logout", requestOptions);
+      const response = await fetch("http://localhost:8086/api/logout", requestOptions);
       const result = await response.text();
   
       if (!response.ok) {
