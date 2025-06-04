@@ -28,7 +28,7 @@ const Clasificacion = () => {
         const token = localStorage.getItem("token");
         
         // 1. Verificar si el usuario tiene liga
-        const checkResponse = await fetch("https://tikitaki.onrender.com/api/leagues/user/check", {
+        const checkResponse = await fetch("https://tikitaki-backend.onrender.com/api/leagues/user/check", {
           headers: {
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -43,7 +43,7 @@ const Clasificacion = () => {
 
         // 2. Si tiene liga, cargar los datos completos
         if (checkData.hasLeague) {
-          const leagueResponse = await fetch(`https://tikitaki.onrender.com/api/leagues/${checkData.leagueId}`, {
+          const leagueResponse = await fetch(`https://tikitaki-backend.onrender.com/api/leagues/${checkData.leagueId}`, {
             headers: {
               "Authorization": `Bearer ${token}`,
               "Accept": "application/json"
@@ -77,7 +77,7 @@ const Clasificacion = () => {
   const fetchClasificacion = async (leagueId) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`https://tikitaki.onrender.com/api/leagues/${leagueId}/ranking`, {
+      const response = await fetch(`https://tikitaki-backend.onrender.com/api/leagues/${leagueId}/ranking`, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Accept": "application/json"
@@ -96,7 +96,7 @@ const Clasificacion = () => {
         setClasificacion(clasificacionProcesada);
       } else {
         // Si falla, crear una clasificación básica con los miembros
-        const miembrosResponse = await fetch(`https://tikitaki.onrender.com/api/leagues/${leagueId}/users`, {
+        const miembrosResponse = await fetch(`https://tikitaki-backend.onrender.com/api/leagues/${leagueId}/users`, {
           headers: {
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -121,7 +121,7 @@ const Clasificacion = () => {
   const fetchMiembrosLiga = async (leagueId) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`https://tikitaki.onrender.com/api/leagues/${leagueId}/users`, {
+      const response = await fetch(`https://tikitaki-backend.onrender.com/api/leagues/${leagueId}/users`, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Accept": "application/json"
@@ -154,7 +154,7 @@ const Clasificacion = () => {
     if (!token) throw new Error("No estás autenticado");
     if (!formData.name_league.trim()) throw new Error("El nombre es requerido");
 
-    const response = await fetch("https://tikitaki.onrender.com/api/leagues", {
+    const response = await fetch("https://tikitaki-backend.onrender.com/api/leagues", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
