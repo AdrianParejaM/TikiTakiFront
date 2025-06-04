@@ -42,6 +42,7 @@ const ProveedorSesion = ({children}) => {
   
       const requestOptions = {
         method: "POST",
+        credentials: 'include',
         headers: myHeaders,
         body: raw,
         redirect: "follow"
@@ -78,6 +79,7 @@ const ProveedorSesion = ({children}) => {
   
       const requestOptions = {
         method: "POST",
+        credentials: 'include',
         headers: myHeaders,
         body: raw,
         redirect: "follow",
@@ -124,6 +126,7 @@ const ProveedorSesion = ({children}) => {
   
       const requestOptions = {
         method: "POST",
+        credentials: 'include',
         headers: myHeaders,
         redirect: "follow",
       };
